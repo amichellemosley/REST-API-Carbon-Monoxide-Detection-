@@ -1,0 +1,45 @@
+POST http://localhost:5000/api/v1/rules
+Accept: application/json
+
+###
+POST http://localhost:5000/api/v1/rules
+
+{
+    "parameter":"CO",
+    "threshold": 25000,
+    "usernames":["rvitorino", "fmonsanto"]
+}
+###
+PUT http://localhost:5000/api/v1/rules/<parameter>
+{
+    "parameter":"CO",
+    "threshold": 20000,
+    "usernames":["rvitorino", "fmonsanto"]
+}
+###
+POST http://localhost:5000/api/v1/events
+{
+    "parameter":"CO",
+    "value": 30000
+}
+
+###
+POST http://localhost:5000/api/v1/users
+{
+    "username":"andre"
+}
+###
+
+GET http://localhost:5000/api/v1/users/<username>
+{
+  "alerts": [
+    {
+      "parameter": "CO",
+      "threshold": 20000,
+      "timestamp": "Wed, 06 Jul 2016 00:15:32 GMT",
+      "value": 30000
+    }
+  ],
+  "message": "alerts for the user fmonsanto.",
+  "status": true
+}
